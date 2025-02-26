@@ -1,6 +1,6 @@
 {
-  "name": "polyui",
-  "version": "0.1.4-dev.5",
+  "name": "@polyui/core",
+  "version": "0.1.6",
   "description": "PolyUI: sleek React component library following the Polypass design language",
   "homepage": "https://github.com/polypass/polyui#readme",
   "bugs": {
@@ -15,7 +15,6 @@
     "Logan Dhillon <dev@logandhillon.com>"
   ],
   "scripts": {
-    "clean": "rm -rf dist",
     "build": "tsup",
     "copy-assets": "copyfiles -u 1 assets/**/* dist",
     "watch": "tsup --watch"
