@@ -1,14 +1,19 @@
 "use client";
 
 // src/components/alert.tsx
+import { jsx, jsxs } from "react/jsx-runtime";
 var Alert = (props) => {
-  return /* @__PURE__ */ React.createElement("div", { className: "space-y-6 max-w-sm mx-auto sm:mt-6 transition-all duration-500" }, /* @__PURE__ */ React.createElement("h1", { className: "text-2xl font-semibold" }, props.title), props.children);
+  return /* @__PURE__ */ jsxs("div", { className: "space-y-6 max-w-sm mx-auto sm:mt-6 transition-all duration-500", children: [
+    /* @__PURE__ */ jsx("h1", { className: "text-2xl font-semibold", children: props.title }),
+    props.children
+  ] });
 };
 
 // src/components/sidebar.tsx
 import { Button, Tooltip } from "@heroui/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Fragment, jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
 var SidebarItem = ({
   name,
   icon,
@@ -16,30 +21,33 @@ var SidebarItem = ({
 }) => {
   const pathname = usePathname();
   const getDynamicColor = (path) => pathname === path ? "primary" : "default";
-  return /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(
-    Button,
-    {
-      startContent: icon,
-      className: "justify-start hidden lg:flex",
-      as: Link,
-      href,
-      color: getDynamicColor(href)
-    },
-    name
-  ), /* @__PURE__ */ React.createElement(Tooltip, { content: name, placement: "right" }, /* @__PURE__ */ React.createElement(
-    Button,
-    {
-      isIconOnly: true,
-      className: "lg:hidden",
-      as: Link,
-      href,
-      color: getDynamicColor(href)
-    },
-    icon
-  )));
+  return /* @__PURE__ */ jsxs2(Fragment, { children: [
+    /* @__PURE__ */ jsx2(
+      Button,
+      {
+        startContent: icon,
+        className: "justify-start hidden lg:flex",
+        as: Link,
+        href,
+        color: getDynamicColor(href),
+        children: name
+      }
+    ),
+    /* @__PURE__ */ jsx2(Tooltip, { content: name, placement: "right", children: /* @__PURE__ */ jsx2(
+      Button,
+      {
+        isIconOnly: true,
+        className: "lg:hidden",
+        as: Link,
+        href,
+        color: getDynamicColor(href),
+        children: icon
+      }
+    ) })
+  ] });
 };
 var Sidebar = ({ children }) => {
-  return /* @__PURE__ */ React.createElement("div", { className: "p-5 border-r border-default-200 lg:w-64 w-20 flex flex-col gap-4 transition-all" }, children);
+  return /* @__PURE__ */ jsx2("div", { className: "p-5 border-r border-default-200 lg:w-64 w-20 flex flex-col gap-4 transition-all", children });
 };
 
 // src/components/table.tsx
@@ -60,7 +68,8 @@ import {
   TableRow
 } from "@heroui/react";
 import { CaretDown, MagnifyingGlass, PlusCircle } from "@phosphor-icons/react";
-import React2 from "react";
+import React from "react";
+import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
 var TableView = ({
   data,
   columns,
@@ -69,30 +78,30 @@ var TableView = ({
   onAdd,
   cellProcessor
 }) => {
-  const [searchQuery, setSearchQuery] = React2.useState("");
-  const [selectedKeys, setSelectedKeys] = React2.useState(
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [selectedKeys, setSelectedKeys] = React.useState(
     /* @__PURE__ */ new Set([])
   );
-  const [visibleColumns, setVisibleColumns] = React2.useState(
+  const [visibleColumns, setVisibleColumns] = React.useState(
     new Set(columns.map((col) => col.uid))
   );
-  const [rowsPerPage, setRowsPerPage] = React2.useState(5);
-  const [sortDescriptor, setSortDescriptor] = React2.useState({
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [sortDescriptor, setSortDescriptor] = React.useState({
     column: columns[0].uid,
     direction: "ascending"
   });
-  const [page, setPage] = React2.useState(1);
+  const [page, setPage] = React.useState(1);
   const pages = Math.ceil(data.length / rowsPerPage);
-  const headerColumns = React2.useMemo(() => {
+  const headerColumns = React.useMemo(() => {
     return visibleColumns === "all" ? columns : columns.filter((col) => Array.from(visibleColumns).includes(col.uid));
   }, [visibleColumns]);
-  const items = React2.useMemo(() => {
+  const items = React.useMemo(() => {
     const pageStartIdx = (page - 1) * rowsPerPage;
     return data.filter(
       (item) => !searchQuery || item[columns[0].uid].toLowerCase().includes(searchQuery.toLowerCase())
     ).slice(pageStartIdx, pageStartIdx + rowsPerPage);
   }, [page, searchQuery, rowsPerPage]);
-  const sortedItems = React2.useMemo(
+  const sortedItems = React.useMemo(
     () => [...items].sort((a, b) => {
       const [first, second] = [
         a[sortDescriptor.column],
@@ -102,86 +111,117 @@ var TableView = ({
     }),
     [sortDescriptor, items]
   );
-  const topContent = React2.useMemo(() => {
-    return /* @__PURE__ */ React2.createElement("div", { className: "space-y-4" }, /* @__PURE__ */ React2.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ React2.createElement("div", { className: "flex gap-2 items-center" }, /* @__PURE__ */ React2.createElement("h1", { className: "text-2xl font-bold" }, label, "s"), /* @__PURE__ */ React2.createElement(
-      Chip,
-      {
-        size: "sm",
-        className: "bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400"
-      },
-      data.length
-    )), /* @__PURE__ */ React2.createElement(
-      Button2,
-      {
-        color: "primary",
-        endContent: /* @__PURE__ */ React2.createElement(PlusCircle, { weight: "fill", size: 18 }),
-        onPress: onAdd
-      },
-      "Add ",
-      label
-    )), /* @__PURE__ */ React2.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ React2.createElement("div", { className: "flex justify-between gap-3" }, /* @__PURE__ */ React2.createElement(
-      Input,
-      {
-        isClearable: true,
-        placeholder: `Search by ${columns[0].name.toLowerCase()}...`,
-        size: "sm",
-        startContent: /* @__PURE__ */ React2.createElement(MagnifyingGlass, { className: "text-default-300" }),
-        value: searchQuery,
-        onClear: () => setSearchQuery(""),
-        onValueChange: (value) => {
-          if (value) {
-            setSearchQuery(value);
-            setPage(1);
-          } else setSearchQuery("");
-        }
-      }
-    ), /* @__PURE__ */ React2.createElement("div", { className: "flex gap-3" }, /* @__PURE__ */ React2.createElement(Dropdown, null, /* @__PURE__ */ React2.createElement(DropdownTrigger, null, /* @__PURE__ */ React2.createElement(
-      Button2,
-      {
-        endContent: /* @__PURE__ */ React2.createElement(CaretDown, { className: "text-small" }),
-        size: "sm",
-        variant: "flat"
-      },
-      "Columns"
-    )), /* @__PURE__ */ React2.createElement(
-      DropdownMenu,
-      {
-        disallowEmptySelection: true,
-        "aria-label": "Table Columns",
-        closeOnSelect: false,
-        selectedKeys: visibleColumns,
-        selectionMode: "multiple",
-        onSelectionChange: setVisibleColumns
-      },
-      columns.map((column) => /* @__PURE__ */ React2.createElement(DropdownItem, { key: column.uid, className: "capitalize" }, column.name))
-    )))), /* @__PURE__ */ React2.createElement("label", { className: "flex items-center text-default-400 text-small" }, "Rows per page:", /* @__PURE__ */ React2.createElement(
-      "select",
-      {
-        className: "bg-transparent outline-none text-default-400 text-small",
-        onChange: (e) => {
-          setRowsPerPage(Number(e.target.value));
-          setPage(1);
-        }
-      },
-      /* @__PURE__ */ React2.createElement("option", { value: "5" }, "5"),
-      /* @__PURE__ */ React2.createElement("option", { value: "10" }, "10"),
-      /* @__PURE__ */ React2.createElement("option", { value: "15" }, "15")
-    ))));
+  const topContent = React.useMemo(() => {
+    return /* @__PURE__ */ jsxs3("div", { className: "space-y-4", children: [
+      /* @__PURE__ */ jsxs3("div", { className: "flex justify-between items-center", children: [
+        /* @__PURE__ */ jsxs3("div", { className: "flex gap-2 items-center", children: [
+          /* @__PURE__ */ jsxs3("h1", { className: "text-2xl font-bold", children: [
+            label,
+            "s"
+          ] }),
+          /* @__PURE__ */ jsx3(
+            Chip,
+            {
+              size: "sm",
+              className: "bg-slate-200 text-slate-600 dark:bg-slate-800 dark:text-slate-400",
+              children: data.length
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsxs3(
+          Button2,
+          {
+            color: "primary",
+            endContent: /* @__PURE__ */ jsx3(PlusCircle, { weight: "fill", size: 18 }),
+            onPress: onAdd,
+            children: [
+              "Add ",
+              label
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ jsxs3("div", { className: "flex justify-between items-center", children: [
+        /* @__PURE__ */ jsxs3("div", { className: "flex justify-between gap-3", children: [
+          /* @__PURE__ */ jsx3(
+            Input,
+            {
+              isClearable: true,
+              placeholder: `Search by ${columns[0].name.toLowerCase()}...`,
+              size: "sm",
+              startContent: /* @__PURE__ */ jsx3(MagnifyingGlass, { className: "text-default-300" }),
+              value: searchQuery,
+              onClear: () => setSearchQuery(""),
+              onValueChange: (value) => {
+                if (value) {
+                  setSearchQuery(value);
+                  setPage(1);
+                } else setSearchQuery("");
+              }
+            }
+          ),
+          /* @__PURE__ */ jsx3("div", { className: "flex gap-3", children: /* @__PURE__ */ jsxs3(Dropdown, { children: [
+            /* @__PURE__ */ jsx3(DropdownTrigger, { children: /* @__PURE__ */ jsx3(
+              Button2,
+              {
+                endContent: /* @__PURE__ */ jsx3(CaretDown, { className: "text-small" }),
+                size: "sm",
+                variant: "flat",
+                children: "Columns"
+              }
+            ) }),
+            /* @__PURE__ */ jsx3(
+              DropdownMenu,
+              {
+                disallowEmptySelection: true,
+                "aria-label": "Table Columns",
+                closeOnSelect: false,
+                selectedKeys: visibleColumns,
+                selectionMode: "multiple",
+                onSelectionChange: setVisibleColumns,
+                children: columns.map((column) => /* @__PURE__ */ jsx3(DropdownItem, { className: "capitalize", children: column.name }, column.uid))
+              }
+            )
+          ] }) })
+        ] }),
+        /* @__PURE__ */ jsxs3("label", { className: "flex items-center text-default-400 text-small", children: [
+          "Rows per page:",
+          /* @__PURE__ */ jsxs3(
+            "select",
+            {
+              className: "bg-transparent outline-none text-default-400 text-small",
+              onChange: (e) => {
+                setRowsPerPage(Number(e.target.value));
+                setPage(1);
+              },
+              children: [
+                /* @__PURE__ */ jsx3("option", { value: "5", children: "5" }),
+                /* @__PURE__ */ jsx3("option", { value: "10", children: "10" }),
+                /* @__PURE__ */ jsx3("option", { value: "15", children: "15" })
+              ]
+            }
+          )
+        ] })
+      ] })
+    ] });
   }, [searchQuery, visibleColumns, data.length]);
-  const bottomContent = React2.useMemo(() => {
-    return /* @__PURE__ */ React2.createElement("div", { className: "flex justify-between items-center" }, /* @__PURE__ */ React2.createElement(
-      Pagination,
-      {
-        showControls: true,
-        isCompact: true,
-        isDisabled: !!searchQuery,
-        page,
-        total: pages,
-        onChange: setPage
-      }
-    ), /* @__PURE__ */ React2.createElement("span", { className: "text-small text-default-400" }, selectedKeys === "all" ? "All items selected" : `${selectedKeys.size} of ${items.length} selected`));
+  const bottomContent = React.useMemo(() => {
+    return /* @__PURE__ */ jsxs3("div", { className: "flex justify-between items-center", children: [
+      /* @__PURE__ */ jsx3(
+        Pagination,
+        {
+          showControls: true,
+          isCompact: true,
+          isDisabled: !!searchQuery,
+          page,
+          total: pages,
+          onChange: setPage
+        }
+      ),
+      /* @__PURE__ */ jsx3("span", { className: "text-small text-default-400", children: selectedKeys === "all" ? "All items selected" : `${selectedKeys.size} of ${items.length} selected` })
+    ] });
   }, [selectedKeys, items.length, page, pages, searchQuery]);
-  return /* @__PURE__ */ React2.createElement(
+  return /* @__PURE__ */ jsxs3(
     Table,
     {
       isCompact: true,
@@ -194,25 +234,27 @@ var TableView = ({
       topContent,
       topContentPlacement: "outside",
       onSelectionChange: setSelectedKeys,
-      onSortChange: setSortDescriptor
-    },
-    /* @__PURE__ */ React2.createElement(TableHeader, { columns: headerColumns }, (column) => /* @__PURE__ */ React2.createElement(
-      TableColumn,
-      {
-        key: column.uid,
-        align: column.uid === "actions" ? "center" : "start",
-        allowsSorting: column.sortable
-      },
-      column.name
-    )),
-    /* @__PURE__ */ React2.createElement(
-      TableBody,
-      {
-        emptyContent: emptyContent || "No data found.",
-        items: sortedItems
-      },
-      (item) => /* @__PURE__ */ React2.createElement(TableRow, { key: item.id }, (columnKey) => /* @__PURE__ */ React2.createElement(TableCell, null, cellProcessor ? cellProcessor(item, columnKey) : item[columnKey]))
-    )
+      onSortChange: setSortDescriptor,
+      children: [
+        /* @__PURE__ */ jsx3(TableHeader, { columns: headerColumns, children: (column) => /* @__PURE__ */ jsx3(
+          TableColumn,
+          {
+            align: column.uid === "actions" ? "center" : "start",
+            allowsSorting: column.sortable,
+            children: column.name
+          },
+          column.uid
+        ) }),
+        /* @__PURE__ */ jsx3(
+          TableBody,
+          {
+            emptyContent: emptyContent || "No data found.",
+            items: sortedItems,
+            children: (item) => /* @__PURE__ */ jsx3(TableRow, { children: (columnKey) => /* @__PURE__ */ jsx3(TableCell, { children: cellProcessor ? cellProcessor(item, columnKey) : item[columnKey] }) }, item.id)
+          }
+        )
+      ]
+    }
   );
 };
 
@@ -537,6 +579,7 @@ function $5c3e21d68f1c4674$export$439d29a4e110a164(props) {
 // src/components/theme-switch.tsx
 import clsx from "clsx";
 import { useTheme } from "next-themes";
+import { jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
 var ThemeSwitch = ({
   className,
   classNames
@@ -559,7 +602,7 @@ var ThemeSwitch = ({
     "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
     onChange
   });
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ jsxs4(
     Component,
     {
       ...getBaseProps({
@@ -568,32 +611,34 @@ var ThemeSwitch = ({
           className,
           classNames?.base
         )
-      })
-    },
-    /* @__PURE__ */ React.createElement($5c3e21d68f1c4674$export$439d29a4e110a164, null, /* @__PURE__ */ React.createElement("input", { ...getInputProps() })),
-    /* @__PURE__ */ React.createElement(
-      "div",
-      {
-        ...getWrapperProps(),
-        className: slots.wrapper({
-          class: clsx(
-            [
-              "w-auto h-auto",
-              "bg-transparent",
-              "rounded-lg",
-              "flex items-center justify-center",
-              "group-data-[selected=true]:bg-transparent",
-              "!text-default-500",
-              "pt-px",
-              "px-0",
-              "mx-0"
-            ],
-            classNames?.wrapper
-          )
-        })
-      },
-      !isSelected || isSSR ? /* @__PURE__ */ React.createElement(Sun, { size: 22 }) : /* @__PURE__ */ React.createElement(Moon, { size: 22 })
-    )
+      }),
+      children: [
+        /* @__PURE__ */ jsx4($5c3e21d68f1c4674$export$439d29a4e110a164, { children: /* @__PURE__ */ jsx4("input", { ...getInputProps() }) }),
+        /* @__PURE__ */ jsx4(
+          "div",
+          {
+            ...getWrapperProps(),
+            className: slots.wrapper({
+              class: clsx(
+                [
+                  "w-auto h-auto",
+                  "bg-transparent",
+                  "rounded-lg",
+                  "flex items-center justify-center",
+                  "group-data-[selected=true]:bg-transparent",
+                  "!text-default-500",
+                  "pt-px",
+                  "px-0",
+                  "mx-0"
+                ],
+                classNames?.wrapper
+              )
+            }),
+            children: !isSelected || isSSR ? /* @__PURE__ */ jsx4(Sun, { size: 22 }) : /* @__PURE__ */ jsx4(Moon, { size: 22 })
+          }
+        )
+      ]
+    }
   );
 };
 export {

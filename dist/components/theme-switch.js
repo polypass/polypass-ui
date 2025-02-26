@@ -321,6 +321,7 @@ function $5c3e21d68f1c4674$export$439d29a4e110a164(props) {
 // src/components/theme-switch.tsx
 import clsx from "clsx";
 import { useTheme } from "next-themes";
+import { jsx, jsxs } from "react/jsx-runtime";
 var ThemeSwitch = ({
   className,
   classNames
@@ -343,7 +344,7 @@ var ThemeSwitch = ({
     "aria-label": `Switch to ${theme === "light" || isSSR ? "dark" : "light"} mode`,
     onChange
   });
-  return /* @__PURE__ */ React.createElement(
+  return /* @__PURE__ */ jsxs(
     Component,
     {
       ...getBaseProps({
@@ -352,32 +353,34 @@ var ThemeSwitch = ({
           className,
           classNames?.base
         )
-      })
-    },
-    /* @__PURE__ */ React.createElement($5c3e21d68f1c4674$export$439d29a4e110a164, null, /* @__PURE__ */ React.createElement("input", { ...getInputProps() })),
-    /* @__PURE__ */ React.createElement(
-      "div",
-      {
-        ...getWrapperProps(),
-        className: slots.wrapper({
-          class: clsx(
-            [
-              "w-auto h-auto",
-              "bg-transparent",
-              "rounded-lg",
-              "flex items-center justify-center",
-              "group-data-[selected=true]:bg-transparent",
-              "!text-default-500",
-              "pt-px",
-              "px-0",
-              "mx-0"
-            ],
-            classNames?.wrapper
-          )
-        })
-      },
-      !isSelected || isSSR ? /* @__PURE__ */ React.createElement(Sun, { size: 22 }) : /* @__PURE__ */ React.createElement(Moon, { size: 22 })
-    )
+      }),
+      children: [
+        /* @__PURE__ */ jsx($5c3e21d68f1c4674$export$439d29a4e110a164, { children: /* @__PURE__ */ jsx("input", { ...getInputProps() }) }),
+        /* @__PURE__ */ jsx(
+          "div",
+          {
+            ...getWrapperProps(),
+            className: slots.wrapper({
+              class: clsx(
+                [
+                  "w-auto h-auto",
+                  "bg-transparent",
+                  "rounded-lg",
+                  "flex items-center justify-center",
+                  "group-data-[selected=true]:bg-transparent",
+                  "!text-default-500",
+                  "pt-px",
+                  "px-0",
+                  "mx-0"
+                ],
+                classNames?.wrapper
+              )
+            }),
+            children: !isSelected || isSSR ? /* @__PURE__ */ jsx(Sun, { size: 22 }) : /* @__PURE__ */ jsx(Moon, { size: 22 })
+          }
+        )
+      ]
+    }
   );
 };
 export {
