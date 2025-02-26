@@ -4,30 +4,12 @@ Sleek React component library following the Polypass design language
 
 ## Installation
 
-1. Add this library to your project with
-
-```sh
-git submodule add https://github.com/polypass/polyui.git
-```
-
-2. Add this to your `package.json`
+1. Add this library to your project by adding this to your `package.json`
 
 ```json
-"scripts": {
+"dependencies": {
   [...]
-  "postinstall": "git submodule update --remote",
-}
-```
-
-3. Add this to your `tsconfig.json` (if you're using TypeScript)
-
-```json
-"compilerOptions": {
-  [...]
-  "paths": {
-    [...]
-    "@polyui/*": ["./polyui/src/*"]
-  }
+  "polyui": "polypass/polyui",
 }
 ```
 
