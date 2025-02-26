@@ -10,10 +10,10 @@
     "moduleResolution": "Node",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
+    "rootDir": "src",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "assets"],
   "exclude": ["node_modules", "dist"]
 }
