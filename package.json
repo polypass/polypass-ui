@@ -1,0 +1,50 @@
+{
+  "name": "polyui",
+  "version": "0.1.0",
+  "description": "PolyUI: sleek React component library following the Polypass design language",
+  "scripts": {
+    "build": "rm -rf dist && tsc",
+    "copy-assets": "copyfiles -u 1 assets/**/* dist",
+    "watch": "tsc --watch"
+  },
+  "homepage": "https://github.com/polypass/polyui#readme",
+  "bugs": {
+    "url": "https://github.com/polypass/polyui/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polypass/polyui.git"
+  },
+  "author": "Polypass <info@polypass.ca>",
+  "contributors": [
+    "Logan Dhillon <dev@logandhillon.com>"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "copyfiles": "^2.4.1",
+    "typescript": "^5.7.3"
+  },
+  "files": [
+    "dist",
+  ],
+  "exports": {
+    ".": "./dist/index.js",
+    "./index.d.ts": "./dist/index.d.ts",
+    "./components": "./dist/components/*"
+  },
+  "peerDependencies": {
+    "@heroui/react": "^2.7.2",
+    "@phosphor-icons/react": "^2.1.7",
+    "clsx": "^2.1.1",
+    "next": "^15.1.7",
+    "next-themes": "^0.4.4",
+    "react": "^19.0.0",
+    "react-aria": "^3.37.0",
+    "react-dom": "^19.0.0"
+  }
+}
