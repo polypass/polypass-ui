@@ -7,13 +7,15 @@
     "jsx": "preserve",
     "declaration": true,
     "declarationMap": true,
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "rootDir": "src",
+    "esModuleInterop": true,
     "paths": {
       "@/*": ["./src/*"]
     }
   },
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }
