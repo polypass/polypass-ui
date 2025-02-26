@@ -1,1 +1,2 @@
-export * from "./components"
+"use client";
+export * from "./components";

@@ -1,3 +1,5 @@
+"use client";
+
 export * from "./alert";
 export * from "./sidebar";
 export * from "./table";
