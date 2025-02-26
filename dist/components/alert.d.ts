@@ -1,9 +1,8 @@
-import * as react from 'react';
-import { ReactNode } from 'react';
+import { FC, ReactNode } from 'react';
 
-declare function Alert(props: {
+declare const Alert: FC<{
     title: string;
     children?: ReactNode;
-}): react.JSX.Element;
+}>;
 
 export { Alert };
