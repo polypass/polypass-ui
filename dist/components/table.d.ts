@@ -1,4 +1,5 @@
-import { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
+
 type TableViewProps = {
     data: Record<string, string>[];
     columns: {
@@ -11,6 +12,6 @@ type TableViewProps = {
     onAdd?: () => void;
     cellProcessor?: (item: Record<string, string>, column: string | number) => ReactNode;
 };
-export declare const TableView: FC<TableViewProps>;
-export {};
-//# sourceMappingURL=table.d.ts.map
+declare const TableView: FC<TableViewProps>;
+
+export { TableView };

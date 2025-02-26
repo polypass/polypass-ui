@@ -1,6 +1,9 @@
-import { ReactNode } from "react";
-export declare function Alert(props: {
+import * as react from 'react';
+import { ReactNode } from 'react';
+
+declare function Alert(props: {
     title: string;
     children?: ReactNode;
-}): import("react").JSX.Element;
-//# sourceMappingURL=alert.d.ts.map
+}): react.JSX.Element;
+
+export { Alert };
