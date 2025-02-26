@@ -1,6 +1,6 @@
 {
   "name": "polyui",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "PolyUI: sleek React component library following the Polypass design language",
   "homepage": "https://github.com/polypass/polyui#readme",
   "bugs": {
@@ -27,11 +27,11 @@
     "dist"
   ],
   "exports": {
-    ".": "./dist/index.js",
-    "./components/*": {
-      "import": "./dist/components/**/*.js",
-      "types": "./dist/components/**/*.d.ts"
-    }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "peerDependencies": {
     "@heroui/react": "^2.7.2",
