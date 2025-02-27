@@ -3,7 +3,7 @@ import svgr from "esbuild-plugin-svgr";
 import jsx from "@svgr/plugin-jsx";
 
 export default defineConfig({
-  entry: ["src/react/index.ts", "src/lib/index.ts"],
+  entry: ["src/**/index.ts"],
   format: ["esm"],
   dts: true,
   splitting: false,
