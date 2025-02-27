@@ -1,6 +1,6 @@
 {
   "name": "polyui",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "description": "PolyUI: sleek React component library following the Polypass design language",
   "homepage": "https://github.com/polypass/polyui#readme",
   "bugs": {
@@ -19,7 +19,7 @@
     "build": "tsup",
     "copy-assets": "copyfiles -u 1 assets/**/* dist",
     "watch": "tsup --watch",
-    "prepare": "npm run build"
+    "postpack": "npm run build"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -33,6 +33,10 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
     },
+    "./lib": {
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/lib/index.js"
+    },
     "./package.json": "./package.json"
   },
   "peerDependencies": {
@@ -43,13 +47,15 @@
     "next-themes": "^0.2.1",
     "react": "^18.3.1",
     "react-aria": "^3.37.0",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
+    "@svgr/plugin-jsx": "^8.1.0",
     "@types/node": "^22.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "copyfiles": "^2.4.1",
+    "esbuild-plugin-svgr": "^2.0.0",
     "tsup": "^8.4.0",
     "typescript": "^5.7.3"
   }
