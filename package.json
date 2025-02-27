@@ -1,6 +1,6 @@
 {
   "name": "polyui",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "PolyUI: sleek React component library following the Polypass design language",
   "homepage": "https://github.com/polypass/polyui#readme",
   "bugs": {
@@ -18,7 +18,8 @@
     "prebuild": "node src/scripts/build-index.cjs",
     "build": "tsup",
     "copy-assets": "copyfiles -u 1 assets/**/* dist",
-    "watch": "tsup --watch"
+    "watch": "tsup --watch",
+    "prepare": "npm run build"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
