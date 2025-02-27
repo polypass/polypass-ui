@@ -1,2 +1,2 @@
-export * as lib from "./lib";
-export * as react from "./react";
+"use client";
+export * from "./react";
