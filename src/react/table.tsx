@@ -58,6 +58,11 @@ export const TableView: FC<TableViewProps> = ({
   const [page, setPage] = React.useState(1);
   const pages = Math.ceil(data.length / rowsPerPage);
 
+  React.useEffect(() => {
+    setPage(1);
+    setSelectedKeys(new Set([]));
+  }, [data]);
+
   const headerColumns = React.useMemo(() => {
     return visibleColumns === "all"
       ? columns
@@ -73,7 +78,7 @@ export const TableView: FC<TableViewProps> = ({
           item[columns[0].uid].toLowerCase().includes(searchQuery.toLowerCase())
       ) // filter by search query
       .slice(pageStartIdx, pageStartIdx + rowsPerPage); // filter by page
-  }, [page, searchQuery, rowsPerPage]);
+  }, [page, searchQuery, rowsPerPage, data]);
 
   const sortedItems = React.useMemo(
     () =>
