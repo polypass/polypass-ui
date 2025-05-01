@@ -1,14 +1,14 @@
 {
-  "name": "polyui",
+  "name": "polypass-ui",
   "version": "0.1.22",
-  "description": "PolyUI: sleek React component library following the Polypass design language",
-  "homepage": "https://github.com/polypass/polyui#readme",
+  "description": "PolypassUI: sleek React component library following the Polypass design language",
+  "homepage": "https://github.com/polypass/polypass-ui#readme",
   "bugs": {
-    "url": "https://github.com/polypass/polyui/issues"
+    "url": "https://github.com/polypass/polypass-ui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/polypass/polyui.git"
+    "url": "git+https://github.com/polypass/polypass-ui.git"
   },
   "author": "Polypass <info@polypass.ca>",
   "contributors": [

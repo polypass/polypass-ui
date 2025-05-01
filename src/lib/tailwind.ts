@@ -1,6 +1,6 @@
 import plugin from "tailwindcss/plugin.js";
 
-export const polyui = (): ReturnType<typeof plugin> => {
+export const polypassui = (): ReturnType<typeof plugin> => {
   return plugin(() => {}, {
     theme: {
       extend: {

@@ -1,24 +1,17 @@
-# PolyUI
+# PolypassUI
 
 Sleek React component library following the Polypass design language
 
 ## Installation
 
-1. Add this library to your project by adding this to your `package.json`
-
-```json
-"dependencies": {
-  [...]
-  "polyui": "polypass/polyui",
-}
-```
-
-PolyUI is now installed in your project, and will update when you use `npm i`.
+Install PolypassUI by installing the `polypass-ui` package with `npm`, `pnpm`, `yarn`, etc.
 
 ## Usage
 
-You can import components, libraries, etc. from the `@polyui/` package.
+You can import components, libraries, etc. from the `polypass-ui` package.
 
 ## License
 
-&copy;Polypass. All rights reserved. PolyUI is only to be used for Polypass projects, and may not be used without prior authorization.
+&copy;Polypass. All rights reserved.
+
+PolypassUI is only to be used for Polypass projects, and may not be used without prior authorization.
