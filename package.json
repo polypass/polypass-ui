@@ -1,6 +1,6 @@
 {
   "name": "polypass-ui",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "PolypassUI: sleek React component library following the Polypass design language",
   "homepage": "https://github.com/polypass/polypass-ui#readme",
   "bugs": {
@@ -16,9 +16,10 @@
   ],
   "scripts": {
     "prebuild": "node src/scripts/build-index.cjs",
-    "build": "tsup",
+    "build": "vite build",
     "copy-assets": "copyfiles -u 1 assets/**/* dist",
-    "watch": "tsup --watch",
+    "watch": "vite build --watch",
+    "dev": "vite",
     "prepare": "npm run build"
   },
   "main": "dist/index.js",
@@ -55,8 +56,9 @@
     "@types/node": "^22.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.7.0",
     "esbuild-plugin-svgr": "^2.0.0",
-    "tsup": "^8.4.0",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "vite": "^7.0.6"
   }
 }
