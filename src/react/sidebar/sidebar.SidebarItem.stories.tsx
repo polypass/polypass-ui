@@ -5,6 +5,21 @@ import { House } from "@phosphor-icons/react";
 
 const meta: Meta<typeof SidebarItem> = {
   component: SidebarItem,
+  argTypes: {
+    icon: {
+      table: { disable: true },
+      description: "Icon displayed to the left of the item name.",
+    },
+    name: { description: "The text label of the SidebarItem." },
+    href: { description: "URL path this item links to." },
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: "A clickable nav-item inside the Sidebar navigation menu.",
+      },
+    },
+  },
 };
 
 export default meta;
