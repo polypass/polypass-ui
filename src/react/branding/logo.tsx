@@ -4,11 +4,7 @@ import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import logo from "./svg";
 
-interface LogoProps {
-  mono?: boolean;
-  color?: "light" | "dark";
-  scale?: number;
-}
+// Removed duplicate LogoProps interface
 
 type LogoComponentProps = React.ImgHTMLAttributes<HTMLImageElement> & {
   alt?: string;

@@ -20,14 +20,14 @@ export const Light: Story = {
 export const Dark: Story = {
   args: {
     color: "dark",
-    mono: false
+    mono: false,
   }
 };
 
 export const DarkMono: Story = {
   args: {
     color: "dark",
-    mono: true
+    mono: true,
   }
 };
 

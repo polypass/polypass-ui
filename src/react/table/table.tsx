@@ -24,7 +24,7 @@ import { CaretDown, MagnifyingGlass, PlusCircle } from "@phosphor-icons/react";
 import React, { FC, ReactNode } from "react";
 
 type TableViewProps = {
-  data: Record<string, string | number | any>[];
+  data: Record<string, string | number | unknown>[];
   columns: { name: string; uid: string; sortable?: boolean }[];
   emptyContent?: string;
   label: string;
