@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { fn } from "storybook/test";
 
 import { TableView } from "./table";
 
@@ -50,6 +51,7 @@ export const PopulatedTable: Story = {
       { name: "Date of Birth", uid: "dob" },
       { name: "Phone Number", uid: "phone" },
     ],
+    onAdd: fn(),
   },
 };
 
