@@ -1,6 +1,6 @@
 {
   "name": "polypass-ui",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "PolypassUI: sleek React component library following the Polypass design language",
   "homepage": "https://github.com/polypass/polypass-ui#readme",
   "bugs": {
@@ -16,10 +16,13 @@
   ],
   "scripts": {
     "prebuild": "node src/scripts/build-index.cjs",
-    "build": "tsup",
+    "build": "vite build",
     "copy-assets": "copyfiles -u 1 assets/**/* dist",
-    "watch": "tsup --watch",
-    "prepare": "npm run build"
+    "watch": "vite build --watch",
+    "dev": "vite",
+    "prepare": "npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -40,7 +43,7 @@
     "./package.json": "./package.json"
   },
   "peerDependencies": {
-    "@heroui/react": "^2.7.2",
+    "@heroui/react": "^2.8.1",
     "@phosphor-icons/react": "^2.1.7",
     "clsx": "^2.1.1",
     "next": "^15.1.7",
@@ -51,12 +54,18 @@
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
+    "@storybook/addon-docs": "^9.0.18",
+    "@storybook/addon-onboarding": "^9.0.18",
+    "@storybook/react-vite": "^9.0.18",
     "@svgr/plugin-jsx": "^8.1.0",
+    "@tailwindcss/vite": "^4.1.11",
     "@types/node": "^22.13.5",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.7.0",
     "esbuild-plugin-svgr": "^2.0.0",
-    "tsup": "^8.4.0",
-    "typescript": "^5.7.3"
+    "storybook": "^9.0.18",
+    "typescript": "^5.7.3",
+    "vite": "^7.0.6"
   }
 }

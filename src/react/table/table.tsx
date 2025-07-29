@@ -24,7 +24,7 @@ import { CaretDown, MagnifyingGlass, PlusCircle } from "@phosphor-icons/react";
 import React, { FC, ReactNode } from "react";
 
 type TableViewProps = {
-  data: Record<string, string>[];
+  data: Record<string, string | number | unknown>[];
   columns: { name: string; uid: string; sortable?: boolean }[];
   emptyContent?: string;
   label: string;
@@ -75,7 +75,9 @@ export const TableView: FC<TableViewProps> = ({
       .filter(
         (item) =>
           !searchQuery ||
-          item[columns[0].uid].toLowerCase().includes(searchQuery.toLowerCase())
+          String(item[columns[0].uid])
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase())
       ) // filter by search query
       .slice(pageStartIdx, pageStartIdx + rowsPerPage); // filter by page
   }, [page, searchQuery, rowsPerPage, data]);

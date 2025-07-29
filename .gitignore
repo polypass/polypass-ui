@@ -129,3 +129,5 @@ out
 .pnp.*
 
 dist
+*storybook.log
+storybook-static
