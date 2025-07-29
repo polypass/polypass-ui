@@ -1,32 +1,34 @@
 // (C) 2025 Polypass <legal@polypass.ca>. All rights reserved.
 
-"use client";
-
 import { Button, Tooltip } from "@heroui/react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { createContext, useContext } from "react";
+
+const SidebarPathContext = createContext<string | undefined>(undefined);
 
 interface SidebarItemProps {
   name: string;
   icon: React.ReactNode;
   href: string;
+  as?: React.ElementType;
 }
 
 export const SidebarItem: React.FC<SidebarItemProps> = ({
   name,
   icon,
   href,
+  as,
 }) => {
-  const pathname = usePathname();
+  const currentPath = useContext(SidebarPathContext);
+
   const getDynamicColor = (path: string) =>
-    pathname === path ? "primary" : "default";
+    currentPath === path ? "primary" : "default";
 
   return (
     <>
       <Button
         startContent={icon}
         className="justify-start hidden lg:flex"
-        as={Link}
+        as={as || "a"}
         href={href}
         color={getDynamicColor(href)}
       >
@@ -36,7 +38,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
         <Button
           isIconOnly
           className="lg:hidden"
-          as={Link}
+          as={as || "a"}
           href={href}
           color={getDynamicColor(href)}
         >
@@ -51,12 +53,15 @@ type SidebarProps = {
   children:
     | React.ReactElement<typeof SidebarItem>
     | React.ReactElement<typeof SidebarItem>[];
+  currentPath: string;
 };
 
-export const Sidebar: React.FC<SidebarProps> = ({ children }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ children, currentPath }) => {
   return (
     <div className="p-5 border-r border-default-200 lg:w-64 w-20 flex flex-col gap-4 transition-all">
-      {children}
+      <SidebarPathContext.Provider value={currentPath}>
+        {children}
+      </SidebarPathContext.Provider>
     </div>
   );
 };
