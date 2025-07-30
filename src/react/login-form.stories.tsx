@@ -1,34 +1,16 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { LoginForm } from "./login-form";
+import { LoginForm, FormHeader } from "./login-form";
 import { fn } from "storybook/internal/test";
+import { PolypassLogo } from "./branding/logo";
 
 const meta = {
   component: LoginForm,
   args: {
     onSubmit: fn(),
-    children: (
-      <div className="space-y-1">
-        <h1 className="text-lg font-bold">Sign in to your account</h1>
-        <p className="text-sm text-default-500">
-          Welcome back. Please sign in to continue.
-        </p>
-      </div>
-    ),
   },
   argTypes: {
-    children: { table: { disable: true } },
-    color: {
-      control: "select",
-      options: [
-        "background",
-        "default",
-        "primary",
-        "secondary",
-        "warning",
-        "danger",
-      ],
-    },
+    headerContent: { table: { disable: true } },
   },
   decorators: [
     (Story) => (
@@ -45,22 +27,45 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    color: "default",
     hideBranding: false,
+    noBackground: false,
   },
 };
 
 export const WithErrorMessage: Story = {
   args: {
-    color: "default",
     error: "Something went wrong. Please try again later.",
     hideBranding: false,
+    noBackground: false,
   },
 };
 
 export const NoBranding: Story = {
   args: {
-    color: "default",
     hideBranding: true,
+    noBackground: false,
+  },
+};
+
+export const NoBackground: Story = {
+  args: {
+    hideBranding: true,
+    noBackground: true,
+  },
+};
+
+export const CustomHeader: Story = {
+  args: {
+    hideBranding: false,
+    noBackground: false,
+    headerContent: (
+      <div className="flex flex-col items-center gap-2">
+        <PolypassLogo />
+        <FormHeader
+          title="Create a new account"
+          body="Lorem ipsum? Dolor sit."
+        />
+      </div>
+    ),
   },
 };

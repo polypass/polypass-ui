@@ -21,8 +21,8 @@ interface LogoProps {
 }
 
 export const PolypassLogo: React.FC<LogoProps> = ({
-  mono,
-  color,
+  mono = false,
+  color = "dark",
   scale,
   as: ImgComponent,
 }) => {

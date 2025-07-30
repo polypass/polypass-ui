@@ -15,8 +15,8 @@
 
 import { Button, Form, Input } from "@heroui/react";
 import { LockKey } from "@phosphor-icons/react";
-import { FC } from "react";
-import { Box, BoxProps } from "./box";
+import clsx from "clsx";
+import { FC, ReactNode } from "react";
 
 const inputStyles = {
   label: "text-black/50 dark:text-white/90",
@@ -40,32 +40,45 @@ const inputStyles = {
   ],
 };
 
+export const FormHeader: FC<{ title?: string; body?: string }> = ({
+  title = "Sign in to your account",
+  body = "Welcome back, please sign in to continue.",
+}) => (
+  <div className="space-y-1">
+    <h1 className="text-lg font-bold">{title}</h1>
+    <p className="text-sm text-default-500">{body}</p>
+  </div>
+);
+
 type LoginFormProps = {
   error?: string;
   hideBranding?: boolean;
+  noBackground?: boolean;
+  className?: string;
+  headerContent?: ReactNode;
   onSubmit: (formData: FormData) => void;
-} & Omit<BoxProps, "removeSpacing">;
+};
 
 export const LoginForm: FC<LoginFormProps> = ({
   error,
   className,
-  color,
-  variant = "outline",
   hideBranding = false,
-  radius,
+  noBackground = false,
   onSubmit,
-  children,
+  headerContent = <FormHeader />,
 }) => {
   return (
-    <Box
-      className={className}
-      variant={variant}
-      radius={radius}
-      color={color}
-      removeSpacing={true}
+    <div
+      className={clsx(
+        "w-full relative flex flex-col text-center items-center justify-center overflow-hidden",
+        className,
+        {
+          "rounded-md border border-default bg-background": !noBackground,
+        }
+      )}
     >
       <div className="p-6 w-full space-y-6">
-        {children}
+        {headerContent}
 
         <Form className="w-full space-y-4 text-left" action={onSubmit}>
           <Input
@@ -99,6 +112,6 @@ export const LoginForm: FC<LoginFormProps> = ({
           <p>Secured by PolyAuth</p>
         </div>
       )}
-    </Box>
+    </div>
   );
 };
