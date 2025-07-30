@@ -3,6 +3,7 @@
 "use client";
 
 import { SwitchProps, useSwitch } from "@heroui/react";
+import { IconWeight } from "@phosphor-icons/react";
 import { Moon, Sun } from "@phosphor-icons/react/dist/ssr";
 import { useIsSSR } from "@react-aria/ssr";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
@@ -10,14 +11,18 @@ import clsx from "clsx";
 import { useTheme } from "next-themes";
 import { FC } from "react";
 
-export interface ThemeSwitchProps {
+type ThemeSwitchProps = {
   className?: string;
   classNames?: SwitchProps["classNames"];
-}
+  weight?: IconWeight;
+  size?: number;
+};
 
 export const ThemeSwitch: FC<ThemeSwitchProps> = ({
   className,
   classNames,
+  size = 18,
+  weight,
 }) => {
   const { theme, setTheme } = useTheme();
   const isSSR = useIsSSR();
@@ -74,7 +79,11 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {!isSelected || isSSR ? <Sun size={22} /> : <Moon size={22} />}
+        {!isSelected || isSSR ? (
+          <Sun size={size} weight={weight} />
+        ) : (
+          <Moon size={size} weight={weight} />
+        )}
       </div>
     </Component>
   );
