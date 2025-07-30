@@ -18,7 +18,14 @@ const meta = {
     children: { table: { disable: true } },
     color: {
       control: "select",
-      options: ["background", "primary", "secondary", "warning", "danger"],
+      options: [
+        "background",
+        "default",
+        "primary",
+        "secondary",
+        "warning",
+        "danger",
+      ],
     },
   },
   decorators: [
