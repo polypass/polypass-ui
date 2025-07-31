@@ -5,6 +5,7 @@ import { TableView } from "./table";
 
 const meta = {
   component: TableView,
+  title: "Layouts/Table",
 } satisfies Meta<typeof TableView>;
 
 export default meta;

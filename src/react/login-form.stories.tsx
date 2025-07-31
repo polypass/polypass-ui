@@ -6,6 +6,7 @@ import { PolypassLogo } from "./branding/logo";
 
 const meta = {
   component: LoginForm,
+  title: "Forms/LoginForm",
   args: {
     onSubmit: fn(),
   },

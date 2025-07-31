@@ -5,6 +5,7 @@ import { House } from "@phosphor-icons/react";
 
 const meta: Meta<typeof SidebarItem> = {
   component: SidebarItem,
+  title: "Layouts/Sidebar/SidebarItem",
   argTypes: {
     icon: {
       table: { disable: true },

@@ -5,9 +5,12 @@ import { Gear, House } from "@phosphor-icons/react";
 
 const meta = {
   component: Sidebar,
+  title: "Layouts/Sidebar",
+
   argTypes: {
     currentPath: {
-      description: "The current active path to highlight the corresponding sidebar item.",
+      description:
+        "The current active path to highlight the corresponding sidebar item.",
       control: "text",
     },
     children: {
@@ -18,7 +21,8 @@ const meta = {
   parameters: {
     docs: {
       description: {
-        component: "A Sidebar component that displays navigation items and highlights the active path.",
+        component:
+          "A Sidebar component that displays navigation items and highlights the active path.",
       },
     },
   },
@@ -34,7 +38,8 @@ export const Default: Story = {
     options: { storyPadding: false },
     docs: {
       description: {
-        story: "The default Sidebar with two items: Home and Settings, showing how the active path highlights the Settings item.",
+        story:
+          "The default Sidebar with two items: Home and Settings, showing how the active path highlights the Settings item.",
       },
     },
   },

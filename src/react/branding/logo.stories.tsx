@@ -3,7 +3,16 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { PolypassLogo } from "./logo";
 
 const meta: Meta<typeof PolypassLogo> = {
+  title: "Branding/PolypassLogo",
   component: PolypassLogo,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "The Polypass logo component. Backgrounds are added in these stories for visibility purposes only and are not part of the component.",
+      },
+    },
+  },
   argTypes: {
     color: {
       control: "inline-radio",
@@ -21,6 +30,13 @@ export const Light: Story = {
     color: "light",
     mono: false,
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-800 p-8 w-fit">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const Dark: Story = {
@@ -28,6 +44,13 @@ export const Dark: Story = {
     color: "dark",
     mono: false,
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-200 p-8 w-fit">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const DarkMono: Story = {
@@ -35,6 +58,13 @@ export const DarkMono: Story = {
     color: "dark",
     mono: true,
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-200 p-8 w-fit">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export const LightMono: Story = {
@@ -42,4 +72,11 @@ export const LightMono: Story = {
     color: "light",
     mono: true,
   },
+  decorators: [
+    (Story) => (
+      <div className="bg-neutral-800 p-8 w-fit">
+        <Story />
+      </div>
+    ),
+  ],
 };
