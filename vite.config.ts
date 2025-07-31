@@ -1,10 +1,11 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import dts from "vite-plugin-dts";
 import path from "path";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react(), tailwindcss(), dts({ outDir: "dist" })],
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
@@ -28,7 +29,12 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
         },
+        exports: "named",
+        preserveModules: false,
+        preserveModulesRoot: "src",
       },
     },
+    minify: false,
+    sourcemap: true,
   },
 });
