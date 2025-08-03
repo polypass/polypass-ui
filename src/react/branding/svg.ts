@@ -5,11 +5,11 @@ import logo_monolight from "../../assets/logo/polypass_monolight.svg";
 
 export default {
   color: {
-    dark: logo_dark,
-    light: logo_light,
+    light: logo_dark,
+    dark: logo_light,
   },
   mono: {
-    dark: logo_monodark,
-    light: logo_monolight,
+    light: logo_monodark,
+    dark: logo_monolight,
   },
 };
