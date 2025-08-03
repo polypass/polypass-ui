@@ -12,6 +12,7 @@ export default defineConfig({
       entry: path.resolve(__dirname, "src/index.ts"),
       name: "PolypassUI",
       fileName: (format) => `index.${format}.js`,
+      formats: ["es", "cjs"],
     },
     rollupOptions: {
       external: [
@@ -26,10 +27,6 @@ export default defineConfig({
         "tailwindcss",
       ],
       output: {
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-        },
         exports: "named",
         preserveModules: false,
         preserveModulesRoot: "src",

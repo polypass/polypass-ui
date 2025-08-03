@@ -17,14 +17,13 @@
   "scripts": {
     "prebuild": "node src/scripts/build-index.cjs",
     "build": "vite build",
-    "copy-assets": "copyfiles -u 1 assets/**/* dist",
     "watch": "vite build --watch",
     "dev": "vite",
     "prepare": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "main": "dist/index.es.js",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
   "type": "module",
@@ -34,11 +33,13 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.es.js"
+      "import": "./dist/index.es.js",
+      "require": "./dist/index.cjs.js"
     },
     "./lib": {
       "types": "./dist/lib/index.d.ts",
-      "import": "./dist/lib/index.es,js"
+      "import": "./dist/lib/index.es.js",
+      "require": "./dist/lib/index.cjs.js"
     },
     "./package.json": "./package.json"
   },
