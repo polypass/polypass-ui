@@ -2,10 +2,11 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import path from "path";
+import svgr from "vite-plugin-svgr";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), dts({ outDir: "dist" })],
+  plugins: [react(), tailwindcss(), dts({ outDir: "dist" }), svgr()],
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
