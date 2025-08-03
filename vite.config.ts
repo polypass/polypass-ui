@@ -6,7 +6,12 @@ import svgr from "vite-plugin-svgr";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [react(), tailwindcss(), dts({ outDir: "dist" }), svgr()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    dts({ outDir: "dist", exclude: ["**/*.stories.tsx"] }),
+    svgr(),
+  ],
   build: {
     lib: {
       entry: path.resolve(__dirname, "src/index.ts"),
