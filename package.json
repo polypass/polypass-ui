@@ -1,6 +1,6 @@
 {
   "name": "polypass-ui",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "PolypassUI: sleek React component library following the Polypass design language",
   "homepage": "https://github.com/polypass/polypass-ui#readme",
   "bugs": {
