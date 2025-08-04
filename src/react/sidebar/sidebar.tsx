@@ -31,6 +31,7 @@ export const SidebarItem: React.FC<SidebarItemProps> = ({
         as={as || "a"}
         href={href}
         color={getDynamicColor(href)}
+        fullWidth
       >
         {name}
       </Button>
